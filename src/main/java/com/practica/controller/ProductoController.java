@@ -43,14 +43,14 @@ public class ProductoController {
         List<ProductoDto> productosDto = productoService.listarProductos();
         return ResponseEntity.ok(productosDto);
     }
-    @GetMapping("/buscar/{nombre}")
+    @GetMapping("/buscar/nombre/{nombre}")
     public ResponseEntity<?> buscarNombre(@PathVariable String nombre){
         Optional<ProductoDto> producto = productoService.buscarNombre(nombre);
         return producto.isPresent()? ResponseEntity.ok(producto.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
 
     }
-    @GetMapping("/buscar/{id}")
-    public ResponseEntity<?> buscarNombre(@PathVariable long id){
+    @GetMapping("/buscar/id/{id}")
+    public ResponseEntity<?> buscarPorId(@PathVariable long id){
         Optional<ProductoDto> producto = productoService.buscarPorId(id);
         return producto.isPresent()? ResponseEntity.ok(producto.get()) : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Producto no encontrado");
 
